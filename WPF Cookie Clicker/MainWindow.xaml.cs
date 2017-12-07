@@ -98,6 +98,5 @@ namespace WPF_Cookie_Clicker
                 txtGrandma.Text = Convert.ToString(Convert.ToInt32(GrandmaPrice));
             }
         }
-
     }
 }

@@ -5,8 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Cookie_Clicker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="400" Width="700">
+
+
     <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2.5*" ></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
         
+        <Button x:Name="Cookie" Content="Cookie" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="100" RenderTransformOrigin="0,1" Click="Cookie_Click"></Button>
+
+        <StackPanel Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Text="Cookies:" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtTotalCookies" Text="0" VerticalAlignment="Top"/>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal">
+                <TextBox Text="Cookies per second:" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtCookiesPs" Text="0" VerticalAlignment="Top"/>
+            </StackPanel>
+        </StackPanel>
+        
+        
+        <StackPanel Grid.Column="2">
+
+            <TextBlock Text="Clickers"/>
+            <StackPanel Orientation="Horizontal" >
+                <Button x:Name="btnClick" Content="Click" MinWidth="180" Click="btnClick_Click"/>
+                <TextBox x:Name="txtCLick" Text="15" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" >
+                <Button x:Name="btnGrandma" Content="Click" MinWidth="180" Click="btnGrandma_Click"/>
+                <TextBox x:Name="txtGrandma" Text="100" />
+            </StackPanel>
+
+        </StackPanel>
+
     </Grid>
 </Window>

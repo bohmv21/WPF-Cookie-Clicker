@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Cookie_Clicker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="700">
+        Title="MainWindow" Height="400" Width="700" Closing="Window_Closing">
 
 
     <Grid>
@@ -41,6 +41,10 @@
             <StackPanel Orientation="Horizontal" >
                 <Button x:Name="btnGrandma" Content="Click" MinWidth="180" Click="btnGrandma_Click"/>
                 <TextBox x:Name="txtGrandma" Text="100" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" >
+                <Button x:Name="btnFactory" Content="Click" MinWidth="180" Click="btnFactory_Click"/>
+                <TextBox x:Name="txtFactory" Text="1000" />
             </StackPanel>
 
         </StackPanel>

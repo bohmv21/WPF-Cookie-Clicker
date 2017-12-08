@@ -27,6 +27,7 @@ namespace WPF_Cookie_Clicker
 
         public double ClickPrice = 15;
         public double GrandmaPrice = 100;
+        public double FactoryPrice = 1000;
         public MainWindow()
         {
             InitializeComponent();
@@ -65,7 +66,14 @@ namespace WPF_Cookie_Clicker
                     {
                         btnGrandma.IsEnabled = false;
                     }
-
+                    if (TotalCookies >= FactoryPrice)
+                    {
+                        btnFactory.IsEnabled = true;
+                    }
+                    else
+                    {
+                        btnFactory.IsEnabled = false;
+                    }
                 }));
             }
         }
@@ -97,6 +105,23 @@ namespace WPF_Cookie_Clicker
                 GrandmaPrice = GrandmaPrice + Price;
                 txtGrandma.Text = Convert.ToString(Convert.ToInt32(GrandmaPrice));
             }
+        }
+
+        private void btnFactory_Click(object sender, RoutedEventArgs e)
+        {
+            if (TotalCookies >= FactoryPrice)
+            {
+                CookiesPerSecond = CookiesPerSecond + 10;
+                TotalCookies = TotalCookies - FactoryPrice;
+                double Price = FactoryPrice * 15 / 100;
+                FactoryPrice = FactoryPrice + Price;
+                txtFactory.Text = Convert.ToString(Convert.ToInt32(FactoryPrice));
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
     }
 }

@@ -21,12 +21,12 @@
 
         <StackPanel Grid.Column="1">
             <StackPanel Orientation="Horizontal">
-                <TextBox Text="Cookies:" VerticalAlignment="Top"/>
-                <TextBox x:Name="txtTotalCookies" Text="0" VerticalAlignment="Top"/>
+                <TextBlock Text="Cookies:" VerticalAlignment="Top"/>
+                <TextBlock x:Name="txtTotalCookies" Text="0" VerticalAlignment="Top"/>
             </StackPanel>
             <StackPanel  Orientation="Horizontal">
-                <TextBox Text="Cookies per second:" VerticalAlignment="Top"/>
-                <TextBox x:Name="txtCookiesPs" Text="0" VerticalAlignment="Top"/>
+                <TextBlock Text="Cookies per second:" VerticalAlignment="Top"/>
+                <TextBlock x:Name="txtCookiesPs" Text="0" VerticalAlignment="Top"/>
             </StackPanel>
         </StackPanel>
         
@@ -36,15 +36,15 @@
             <TextBlock Text="Clickers"/>
             <StackPanel Orientation="Horizontal" >
                 <Button x:Name="btnClick" Content="Click" MinWidth="180" Click="btnClick_Click"/>
-                <TextBox x:Name="txtCLick" Text="15" />
+                <TextBlock x:Name="txtCLick" Text="15"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" >
-                <Button x:Name="btnGrandma" Content="Click" MinWidth="180" Click="btnGrandma_Click"/>
-                <TextBox x:Name="txtGrandma" Text="100" />
+                <Button x:Name="btnGrandma" Content="Grandma" MinWidth="180" Click="btnGrandma_Click"/>
+                <TextBlock x:Name="txtGrandma" Text="100" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" >
-                <Button x:Name="btnFactory" Content="Click" MinWidth="180" Click="btnFactory_Click"/>
-                <TextBox x:Name="txtFactory" Text="1000" />
+                <Button x:Name="btnFactory" Content="Factory" MinWidth="180" Click="btnFactory_Click"/>
+                <TextBlock x:Name="txtFactory" Text="1000" />
             </StackPanel>
 
         </StackPanel>

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading;
+using System.IO;
 
 namespace WPF_Cookie_Clicker
 {
@@ -33,7 +34,23 @@ namespace WPF_Cookie_Clicker
             InitializeComponent();
             Thread thread = new Thread(Cookies);
             thread.SetApartmentState(ApartmentState.STA);
+            SaveLoad();
             thread.Start();
+        }
+
+        private void SaveLoad()
+        {
+            if (File.Exists("../Save.txt"))
+            {
+               TotalCookies = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(0));
+               CookiesPerSecond = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(1));
+               ClickPrice = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(2));
+               GrandmaPrice = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(3));
+               FactoryPrice = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(4));
+               txtCLick.Text = Convert.ToString(Convert.ToInt32(ClickPrice));
+               txtGrandma.Text = Convert.ToString(Convert.ToInt32(GrandmaPrice));
+               txtFactory.Text = Convert.ToString(Convert.ToInt32(FactoryPrice));
+            }
         }
 
         private void Cookies()
@@ -120,8 +137,9 @@ namespace WPF_Cookie_Clicker
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
+        {            
+            string[] Data = {txtTotalCookies.Text, txtCookiesPs.Text, txtCLick.Text, txtGrandma.Text, txtFactory.Text }; 
+            File.WriteAllLines("../Save.txt", Data);            
         }
     }
 }

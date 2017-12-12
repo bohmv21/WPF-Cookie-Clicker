@@ -31,7 +31,15 @@
         </StackPanel>
         
         
-        <StackPanel Grid.Column="2">
+        
+        
+        
+        
+        
+        
+        <StackPanel Grid.Column="2" >
+
+            <TextBlock Text="Upgrades" Padding="0,0,0,10"/>
 
             <TextBlock Text="Clickers"/>
             <StackPanel Orientation="Horizontal" >

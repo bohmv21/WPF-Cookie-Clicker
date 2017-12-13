@@ -29,6 +29,9 @@ namespace WPF_Cookie_Clicker
         public double ClickPrice = 15;
         public double GrandmaPrice = 100;
         public double FactoryPrice = 1000;
+
+        public double[] CookiesPs = { 0.1, 1, 10};
+        public double[] MachinesBought = { 0, 0, 0,};
         public MainWindow()
         {
             InitializeComponent();
@@ -43,14 +46,22 @@ namespace WPF_Cookie_Clicker
             if (File.Exists("../Save.txt"))
             {
                TotalCookies = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(0));
-               CookiesPerSecond = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(1));
-               ClickPrice = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(2));
-               GrandmaPrice = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(3));
-               FactoryPrice = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(4));
+               MachinesBought[0] = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(1));
+               MachinesBought[1] = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(2));
+               MachinesBought[2] = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(3));
+               ClickPrice = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(4));
+               GrandmaPrice = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(5));
+               FactoryPrice = double.Parse(File.ReadLines("../Save.txt").ElementAtOrDefault(6));
                txtCLick.Text = Convert.ToString(Convert.ToInt32(ClickPrice));
                txtGrandma.Text = Convert.ToString(Convert.ToInt32(GrandmaPrice));
                txtFactory.Text = Convert.ToString(Convert.ToInt32(FactoryPrice));
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string[] Data = { txtTotalCookies.Text, MachinesBought[0].ToString(), MachinesBought[1].ToString(), MachinesBought[2].ToString(), txtCLick.Text, txtGrandma.Text, txtFactory.Text };
+            File.WriteAllLines("../Save.txt", Data);
         }
 
         private void Cookies()
@@ -63,7 +74,8 @@ namespace WPF_Cookie_Clicker
 
                 this.Dispatcher.BeginInvoke(new Action(() =>
                 {
-                    TotalCookies = TotalCookies + CookiesPerSecond/10;
+                    CookiesPerSecond = CookiesPs[0] * MachinesBought[0] + CookiesPs[1] * MachinesBought[1] + CookiesPs[2] * MachinesBought[2];
+                    TotalCookies += CookiesPerSecond/10;
                     txtCookiesPs.Text = Convert.ToString(CookiesPerSecond);
                     txtTotalCookies.Text = Convert.ToString(Convert.ToInt32(TotalCookies));
 
@@ -104,7 +116,7 @@ namespace WPF_Cookie_Clicker
         {
             if (TotalCookies >= ClickPrice)
             {
-                CookiesPerSecond = CookiesPerSecond + 0.1;
+                MachinesBought[0] = MachinesBought[0] + 1;
                 TotalCookies = TotalCookies - ClickPrice;
                 double Price = ClickPrice * 20 / 100;
                 ClickPrice = ClickPrice + Price;
@@ -116,7 +128,7 @@ namespace WPF_Cookie_Clicker
         {
             if (TotalCookies >= GrandmaPrice)
             {
-                CookiesPerSecond = CookiesPerSecond + 1;
+                MachinesBought[1] = MachinesBought[1] + 1;
                 TotalCookies = TotalCookies - GrandmaPrice;
                 double Price = GrandmaPrice * 15 / 100;
                 GrandmaPrice = GrandmaPrice + Price;
@@ -128,7 +140,7 @@ namespace WPF_Cookie_Clicker
         {
             if (TotalCookies >= FactoryPrice)
             {
-                CookiesPerSecond = CookiesPerSecond + 10;
+                MachinesBought[2] = MachinesBought[2] + 1;
                 TotalCookies = TotalCookies - FactoryPrice;
                 double Price = FactoryPrice * 15 / 100;
                 FactoryPrice = FactoryPrice + Price;
@@ -136,10 +148,16 @@ namespace WPF_Cookie_Clicker
             }
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {            
-            string[] Data = {txtTotalCookies.Text, txtCookiesPs.Text, txtCLick.Text, txtGrandma.Text, txtFactory.Text }; 
-            File.WriteAllLines("../Save.txt", Data);            
+        private void btnUpgrade1_Click(object sender, RoutedEventArgs e)
+        {
+            if (TotalCookies >= 100)
+            {
+                CookiesPerSecond = CookiesPerSecond + 10;
+                TotalCookies = TotalCookies - 100;
+                CookiesPs[0] = CookiesPs[0] * 2;
+                CookiesPerClick = CookiesPerClick * 2;
+                ((Button)sender).Visibility = Visibility.Hidden;
+            }
         }
     }
 }

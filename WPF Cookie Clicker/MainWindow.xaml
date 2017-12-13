@@ -16,7 +16,7 @@
             <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        
+
         <Button x:Name="Cookie" Content="Cookie" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="100" RenderTransformOrigin="0,1" Click="Cookie_Click"></Button>
 
         <StackPanel Grid.Column="1">
@@ -29,18 +29,37 @@
                 <TextBlock x:Name="txtCookiesPs" Text="0" VerticalAlignment="Top"/>
             </StackPanel>
         </StackPanel>
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
         <StackPanel Grid.Column="2" >
 
             <TextBlock Text="Upgrades" Padding="0,0,0,10"/>
-
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="btnUpgrade1" Content="20" Height="30" Width="30" Click="btnUpgrade1_Click" Visibility="Visible"></Button>
+                    <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
+                    <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
+                    <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
+                    <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
+                    <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
+                    <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
+                </StackPanel>                                   
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
+                    <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
+                    <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
+                    <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
+                    <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
+                    <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
+                    <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
+                </StackPanel>
+            </StackPanel>
             <TextBlock Text="Clickers"/>
             <StackPanel Orientation="Horizontal" >
                 <Button x:Name="btnClick" Content="Click" MinWidth="180" Click="btnClick_Click"/>

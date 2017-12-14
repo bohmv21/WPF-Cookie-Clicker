@@ -152,7 +152,6 @@ namespace WPF_Cookie_Clicker
         {
             if (TotalCookies >= 100)
             {
-                CookiesPerSecond = CookiesPerSecond + 10;
                 TotalCookies = TotalCookies - 100;
                 CookiesPs[0] = CookiesPs[0] * 2;
                 CookiesPerClick = CookiesPerClick * 2;

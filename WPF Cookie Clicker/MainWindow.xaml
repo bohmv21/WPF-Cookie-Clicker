@@ -29,16 +29,7 @@
                 <TextBlock x:Name="txtCookiesPs" Text="0" VerticalAlignment="Top"/>
             </StackPanel>
         </StackPanel>
-
-
-
-
-
-
-
-
         <StackPanel Grid.Column="2" >
-
             <TextBlock Text="Upgrades" Padding="0,0,0,10"/>
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
@@ -49,7 +40,7 @@
                     <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
                     <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
                     <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
-                </StackPanel>                                   
+                </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
                     <Button Content="20" Height="30" Width="30" Visibility="Hidden"></Button>
@@ -73,8 +64,6 @@
                 <Button x:Name="btnFactory" Content="Factory" MinWidth="180" Click="btnFactory_Click"/>
                 <TextBlock x:Name="txtFactory" Text="1000" />
             </StackPanel>
-
         </StackPanel>
-
     </Grid>
 </Window>
